@@ -1,0 +1,23 @@
+doctype html
+html
+    head
+        title= title
+        link(rel='stylesheet', href='../styles/style.css')
+        link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css")
+        script(src="https://code.jquery.com/jquery-3.6.4.min.js")
+        script(src = "../scripts/script.js")
+    body
+        div.container
+            div(style="margin-left: 2%; margin-top: 23px")
+                a.icon(href='/', title="К списку пользователей")
+                    i.fa.fa-chevron-left.fa-2x(aria-hidden="true")
+            h1.s10 Новости друзей пользователя #{person.name}
+        p
+        div#news-block
+            h2(style="text-align: center") Новости
+            each user in data
+                each post in user.news
+                    hr(style="width: 97%")
+                    div(style="margin: 1%")
+                        h4(style="margin: 2%") Автор: #{user.name}
+                        p #{post}

@@ -1,0 +1,35 @@
+doctype html
+html
+    head
+        title= title
+        link(rel='stylesheet', href='../styles/style.css')
+        link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css")
+        script(src="https://code.jquery.com/jquery-3.6.4.min.js")
+        script(src = "../scripts/script.js")
+    body
+        div.container
+            div(style="margin-left: 2%; margin-top: 23px")
+                a.icon(href='/', title="К списку пользователей")
+                    i.fa.fa-chevron-left.fa-2x(aria-hidden="true")
+            h1.s10 Друзья пользователя #{person.name}
+        div.array
+            each user in data
+                div.card
+                    img(src=user.photo width='185' height='250').avatar
+                    div.text-block
+                        h3 #{user.name}
+                        hr
+                        p Email: #{user.email}
+                        p Дата рождения: #{new Date(user.date).toLocaleDateString('en-GB')}
+                        p Роль: #{user.role}
+                        p Статус: #{user.status}
+                        div.button-block
+                            div.icon
+                                a(href='/friends/' + user.id, title="Друзья", style="color: black")
+                                    i.fa.fa-users.fa-2x(aria-hidden="true")
+                            div.icon
+                                a.icon(href='/news/' + user.id, title="Новости друзей", style="color: black")
+                                    i.fa.fa-newspaper-o.fa-2x(aria-hidden="true")
+                            div.icon
+                                a.icon(href='/setting/' + user.id, title="Редактировать", style="color: black")
+                                    i.fa.fa-pencil.fa-2x(aria-hidden="true")

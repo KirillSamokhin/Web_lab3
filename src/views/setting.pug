@@ -1,0 +1,38 @@
+doctype html
+html
+    head
+        title= title
+        link(rel='stylesheet', href='../styles/style.css')
+        link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css")
+        script(src="https://code.jquery.com/jquery-3.6.4.min.js")
+        script(src = "../scripts/script.js")
+    body
+        div.container
+            div(style="margin-left: 2%; margin-top: 23px")
+                a.icon(href='/', title="К списку пользователей")
+                    i.fa.fa-chevron-left.fa-2x(aria-hidden="true")
+            h1 Редактирование данных пользователя #{data.name}
+        p
+        div#settings-block
+            form(style="margin: 2%")#form
+                .form-group
+                    label(for="editName") ФИО:
+                    input.entry-field(type="text", id="editName", name="name", value=data.name, required)
+                .form-group
+                    label(for="editDate") Дата рождения:
+                    input.entry-field(type="date", id="editDate", name="date", value=data.date, required)
+                .form-group
+                    label(for="editEmail") Почта:
+                    input.entry-field(type="email", id="editEmail", name="email", value=data.email, required)
+                .form-group
+                    label(for="editRole") Роль:
+                    select.entry-field(id="editRole" name="role")
+                        option(value="user", selected=data.role === 'user') Пользователь
+                        option(value="admin", selected=data.role === 'admin') Администратор
+                .form-group
+                    label(for="editStatus") Статус:
+                    select.entry-field(id="editStatus" name="status")
+                        option(value="unverified", selected=data.status === 'unverified') Не подтвержден
+                        option(value="active", selected=data.status === 'active') Активен
+                        option(value="banned", selected=data.status === 'banned') Заблокирован
+                button.fa.fa-floppy-o.fa-2x(type="submit")
